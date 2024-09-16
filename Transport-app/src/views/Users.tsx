@@ -153,7 +153,7 @@ const Users: React.FC = () => {
   return (
     <div className="px-6 py-3">
      <div className="flex justify-between ">
-     <div className="ml-2"> <div className="text-2xl font-bold mt-1 py-2 ml-2 leading-3">Users </div> <p className="text-gray-400 ml-2 ">4 users available</p></div>
+     <div className=""> <div className="text-2xl font-bold mt-1 py-2  leading-3">Users </div> <p className="text-gray-400  ">4 users available</p></div>
       <span className="flex items-center ">
           <Button type="primary" onClick={showModal} className="mr-3 ">
             New user <PlusOutlined className="text-white" />
