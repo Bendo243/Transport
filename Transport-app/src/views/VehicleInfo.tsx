@@ -5,7 +5,7 @@ import BusImage from '../assets/Bus.svg';
 
 const VehicleDetails: React.FC = () => {
   return (
-    <div className="flex flex-col  bg-whit-50   ">
+    <div className="flex flex-col  bg-white-50   ">
     
       <div className="flex items-center justify-between px-5 bg-white  ">
         <div className="flex items-center space-x-4">
@@ -74,7 +74,7 @@ const VehicleDetails: React.FC = () => {
             <p className="text-gray-400 font-medium">Status</p>
             <div className="flex items-center space-x-2">
             <Tag className='flex space-x-1 bg-[#E3FFE6] border-none '> <FaCheckCircle className="text-green-500 mt-1" />
-              <span className="text-green-500 font-semibold">ASSIGNED</span>
+              <span className="text-green-500 font-semibold">AVAILABLE</span>
               </Tag>
             </div>
           </div>

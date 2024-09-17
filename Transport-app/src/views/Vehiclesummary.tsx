@@ -40,7 +40,7 @@ const Vehiclesummary: React.FC = () => {
   return (
     <div className="">
       <div className="flex justify-between ">
-       <div className="ml-2"> <div className="text-2xl font-bold mt-3 py-2 ml-2 leading-3">Vehicles </div> <p className="text-gray-400 ml-2 ">30 available bus</p></div>
+       <div className="ml-4"> <div className="text-2xl font-bold mt-3 py-2  leading-3">Vehicles </div> <p className="text-gray-400  ">30 available bus</p></div>
         <span className="flex items-center">
           <Button type="primary" onClick={showModal} className="mr-3 mt-2">
             Add Vehicle <PlusOutlined className="text-white" />
@@ -65,7 +65,7 @@ const Vehiclesummary: React.FC = () => {
           </Modal>
         </span>
       </div>
-      <div className="flex space-x-2 mt-2">
+      <div className="flex space-x-2 mt-2 ml-4 ">
         <Searchbar /> <div>  <Input
       placeholder="Status"
       className="w-[200px] h-[40px] px-4"

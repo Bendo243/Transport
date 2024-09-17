@@ -26,6 +26,7 @@ const Sidebar: React.FC = () => {
       </div>
 
       <ul className="text-white">
+      <Link to=''>
         <li>
           <p
             className={getOptionClass('Manifest')}
@@ -34,23 +35,17 @@ const Sidebar: React.FC = () => {
             Manifest
           </p>
         </li>
-       
+        </Link>
+        <Link to=''>
         <li
-          className={getOptionClass('Loading Bay')}
-          onClick={() => handleOptionClick('Loading Bay')}
+          className={getOptionClass('Booking')}
+          onClick={() => handleOptionClick('Booking')}
         >
-          <FaRoute className="mr-2" />
-          <span>Loading Bay</span>
-        </li>
-
-       <Link to='/vehicle'> <li
-          className={getOptionClass('Vehicle')}
-          onClick={() => handleOptionClick('Vehicle')}
-        >
-          <FaBusAlt className="mr-2" />
-          <span>Vehicle</span>
+          <FaSuitcase className="mr-2" />
+          <span>Booking</span>
         </li>
         </Link>
+        <Link to=''>
         <li
           className={getOptionClass('Trip')}
           onClick={() => handleOptionClick('Trip')}
@@ -58,7 +53,26 @@ const Sidebar: React.FC = () => {
           <FaSuitcase className="mr-2" />
           <span>Trip</span>
         </li>
-
+        </Link>
+        
+        <Link to='/vehicle'> <li
+          className={getOptionClass('Vehicle')}
+          onClick={() => handleOptionClick('Vehicle')}
+        >
+          <FaBusAlt className="mr-2" />
+          <span>Vehicle</span>
+        </li>
+        </Link>
+       <Link to='/loadingBay'> <li
+          className={getOptionClass('Loading Bay')}
+          onClick={() => handleOptionClick('Loading Bay')}
+        >
+          <FaRoute className="mr-2" />
+          <span>Loading Bay</span>
+        </li>
+        </Link>
+      
+     
 <Link to='/users'>
         <li
           className={getOptionClass('Users')}
