@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom-modal .ant-modal-content {
+    padding: 0; /* Removes the default padding */
+  }
+
+  .body{
+    font-family: 'Courier New', Courier, monospace;
+  }

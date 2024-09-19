@@ -8,14 +8,14 @@ const handleChange = (value: string) => {
 const SelectBar = () => {
   
     return (
-    <div>
+    <div className='w-[200px] h-[32px]'>
        <Select
       defaultValue="STATUS"
       style={{ width: 200,height:40 }}
       onChange={handleChange}
       options={[
         { value: 'ACTIVE', label: 'ACTIVE' },
-        { value: 'INACTIVE', label: 'INACTTIVE' },
+        { value: 'INACTIVE', label: 'INACTIVE' },
         
         // { value: 'disabled', label: 'Disabled', disabled: true },
       ]}

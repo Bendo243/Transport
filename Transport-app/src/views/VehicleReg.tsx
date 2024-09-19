@@ -16,10 +16,7 @@ const VehicleReg: React.FC = () => {
   return (
     <div className=" flex items-center justify-center pt-5">
       <div className="">
-        <div className="bg-orange-500 text-white text-center py-2 rounded-md mb-4">
-          <h2 className="text-lg font-semibold">NEW VEHICLE</h2>
-          <p>Fill in the information to proceed</p>
-        </div>
+       
         <div className="flex space-x-6">
           <div className="flex flex-col items-center justify-center p-4  rounded-lg w-36 h-36">
            
@@ -34,6 +31,7 @@ const VehicleReg: React.FC = () => {
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete="off"
+            className=""
           >
             <Form.Item
               label="Vehicle Name"

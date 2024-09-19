@@ -1,11 +1,16 @@
 import React from "react";
 import Bus from "../assets/Bus.svg";
-import BK from "../assets/Book2.svg";
 import Searchbar from "./Searchbar";
-import { DownOutlined, PlusOutlined } from "@ant-design/icons";
+import {  PlusOutlined, UploadOutlined, } from "@ant-design/icons";
 import { useState } from "react";
-import { Button, Modal, Input, } from "antd";
+import { Button, Modal,  } from "antd";
 import VehicleReg from "./VehicleReg";
+import Total from "../assets/Total.svg"
+import Available from "../assets/Available.svg"
+import Assigned from "../assets/Assigned.svg"
+import Faulty from "../assets/Faulty.svg"
+import SelectBar from "./SelectBar";
+
 
 
 interface SummaryItem {
@@ -17,10 +22,10 @@ interface SummaryItem {
 
 const Vehiclesummary: React.FC = () => {
   const summaryItems: SummaryItem[] = [
-    { Book: BK, label: "TOTAL", count: 10, icon: Bus },
-    { Book: BK, label: "AVAILABLE", count: 10, icon: Bus },
-    { Book: BK, label: "ASSIGNED", count: 10, icon: Bus },
-    { Book: BK, label: "FAULTY", count: 5, icon: Bus },
+    { Book: Total, label: "TOTAL", count: 10, icon: Bus },
+    { Book: Available, label: "AVAILABLE", count: 10, icon: Bus },
+    { Book: Assigned, label: "ASSIGNED", count: 10, icon: Bus },
+    { Book: Faulty, label: "FAULTY", count: 5, icon: Bus },
   ];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,37 +45,51 @@ const Vehiclesummary: React.FC = () => {
   return (
     <div className="">
       <div className="flex justify-between ">
-       <div className="ml-4"> <div className="text-2xl font-bold mt-3 py-2  leading-3">Vehicles </div> <p className="text-gray-400  ">30 available bus</p></div>
+       <div className="ml-4"> <div className="text-2xl font-bold py-2  leading-3">Vehicles </div></div>
         <span className="flex items-center">
+       
+         <div>
+          <Button
+          className="flex items-center border-gray-400 text-gray-600 mt-2 mr-2  h-[36px]" style={{
+         borderRadius:"6px",
+         borderColor:"#D3D3D3",
+         }}
+         >
+         Generate Report <UploadOutlined/>
+         </Button> 
+        
+         </div>
           <Button type="primary" onClick={showModal} className="mr-3 mt-2">
-            Add Vehicle <PlusOutlined className="text-white" />
+            New Vehicle <PlusOutlined className="text-white" />
           </Button>
 
           <Modal
-            title={false}
+            // closeIcon={false}
             open={isModalOpen}
             onCancel={handleCancel}
             footer={
               <div className="flex justify-end space-x-3">
-                <Button onClick={handleCancel} className="bottom-2 w-[144px] right-1">
+                <Button onClick={handleCancel} className="bottom-6 w-[144px] right-3">
                   Cancel
                 </Button>
-                <Button type="primary" onClick={handleOk} className="bottom-2 w-[144px]">
+                <Button type="primary" onClick={handleOk} className="bottom-6 w-[144px] right-4">
                   Submit
                 </Button>
               </div>
             }
+            className="custom-modal"
+          
           >
-            <VehicleReg />
+            <div className="modal-header bg-[#FF742C1A] w-full h-[56px] flex items-center justify-start">
+              <h2 className="text-black font-semibold ml-1 pl-2">NEW VEHICLE</h2></div>
+          <div className="custom-modal-body px-4"> <VehicleReg /> </div>
           </Modal>
         </span>
       </div>
       <div className="flex space-x-2 mt-2 ml-4 ">
-        <Searchbar /> <div>  <Input
-      placeholder="Status"
-      className="w-[200px] h-[40px] px-4"
-      suffix={<DownOutlined className="text-gray-400" />}
-    /></div>
+        <Searchbar /> <div>  
+       <SelectBar/>
+      </div>
       </div>
 
       <div className="grid grid-cols-4 gap-4 p-4 flex-row ">
@@ -80,19 +99,19 @@ const Vehiclesummary: React.FC = () => {
             className="bg-white shadow-md  rounded-lg  flex items-center justify-between hover:cursor-pointer overflow-hidden"
           >
             <div className="flex p-4">
-              <div className="bg-[#BA41321A] w-12 rounded">
+              <div className=" w-12 rounded">
                 {" "}
                 <img
                   src={item.Book}
                   alt={`${item.label} icon`}
-                  className="h-10 w-12 mt-2  p-y-1 "
+                  className="h-12 w-12 mt-1  p-y-1 "
                 />{" "}
               </div>
-              <div className="ml-2">
-                <h3 className="text-lg font-semibold text-gray-400">
+              <div className="ml-1 ">
+                <h3 className=" w-[57px] h-[14px] font-semibold text-gray-400 mb-2">
                   {item.label}
                 </h3>
-                <p className="text-2xl font-bold">{item.count}</p>
+                <p className="text-xl font-bold w-[21px] h-[15px] mt-2">{item.count}</p>
               </div>
             </div>
             <div className="  bg-cover  h-full p-x-4 relative">
