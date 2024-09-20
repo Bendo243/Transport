@@ -45,7 +45,7 @@ const Vehiclesummary: React.FC = () => {
   return (
     <div className="">
       <div className="flex justify-between ">
-       <div className="ml-4"> <div className="text-2xl font-bold py-2  leading-3">Vehicles </div></div>
+       <div className="ml-4"> <div className="text-2xl font-bold py-2 mt-1 leading-3">Vehicles </div></div>
         <span className="flex items-center">
        
          <div>
@@ -65,6 +65,7 @@ const Vehiclesummary: React.FC = () => {
 
           <Modal
             // closeIcon={false}
+            centered={true}
             open={isModalOpen}
             onCancel={handleCancel}
             footer={

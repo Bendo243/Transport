@@ -1,85 +1,95 @@
 import React from 'react';
-import { FaCheckCircle } from 'react-icons/fa';
-import { Card,Tag } from 'antd';
-import BusImage from '../assets/Bus.svg';
+import { Button, Dropdown, Menu, Tag } from 'antd';
+import { FaChevronDown, FaUserCheck } from 'react-icons/fa';
+import BusImage from '../assets/BusD.svg';
+import { EyeOutlined, FormOutlined, StopOutlined } from '@ant-design/icons';
 
 const VehicleDetails: React.FC = () => {
-  return (
-    <div className="flex flex-col  bg-white-50   ">
-    
-      <div className="flex items-center justify-between px-5 bg-white  ">
-        <div className="flex items-center space-x-4">
-          
-          <img src={BusImage} alt="Bus" className="w-[56px] h-[56px] bg-[#BA41321A] rounded-full" />
-          
-          <div>
-            <h1 className="text-xl font-semibold">Bus Gold</h1>
-            <p className="text-orange-500">00071</p>
-          </div>
-        </div>
 
-        
-        
+  const menu = (
+    <Menu>
+      <Menu.Item key="1"><FormOutlined className="mr-1" /> Edit</Menu.Item>
+      <Menu.Item key="2"><  EyeOutlined className="mr-2" /> Report</Menu.Item>
+      <Menu.Item key="3">   <StopOutlined className='mr-2' /> Disable</Menu.Item>
+    </Menu>
+  );
+
+  return (
+    <div className="w-full max-w-3xl mx-auto bg-[white]  rounded-lg ">
+      
+      <div className="flex justify-between items-center border-b bg-[#FF742C14] border-gray-200 pb-4 mb-4">
+        <h2 className="text-l font-bold  px-4 mt-2">VEHICLE INFORMATION</h2>
+        <div className='px-4 mt-3'><Dropdown overlay={menu} trigger={['click']}>
+          <Button className="flex items-center  rounded-md text-sm border-[#FF742C] bg-[#FF742C14] ">
+           <h2 className='font-semibold'> Action</h2> <FaChevronDown  />
+          </Button>
+        </Dropdown> 
+        </div>
       </div>
 
       
-      <Card className="border-white">
-        <div className="bg-orange-500 text-white py-2 px-4 rounded-t-lg">
-          <h2 className="text-lg font-semibold">VEHICLE INFORMATION</h2>
+      <div className="flex px-4">
+        
+        <div className="w-1/3">
+          <img src={BusImage} alt="Vehicle" className="w-full h-auto rounded" />
         </div>
-
-        <div className="grid grid-cols-2 gap-2 py-2 bg-white-100 rounded-b-lg">
-          
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <p className="text-gray-400 font-medium">Vehicle Type</p>
-            <p className="text-gray-800">Coach Bus</p>
-          </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <p className="text-gray-400 font-medium">Vehicle Make</p>
-            <p className="text-gray-800">Tata Motors</p>
-          </div>
-
-          
-          <div className="bg-gray-100 py-4 px-4 rounded-lg">
-            <p className="text-gray-400 font-medium">Registration No</p>
-            <p className="text-gray-800">01907</p>
-          </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <p className="text-gray-400 font-medium">Engine No</p>
-            <p className="text-gray-800">4789</p>
-          </div>
-
-          
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <p className="text-gray-400 font-medium">Color</p>
-            <p className="text-gray-800">White</p>
-          </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <p className="text-gray-400 font-medium">Seat No</p>
-            <p className="text-gray-800">2A</p>
-          </div>
 
         
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <p className="text-gray-400 font-medium">Fleet No</p>
-            <p className="text-gray-800">01907</p>
+        <div className="w-2/3 grid grid-cols-2 gap-4 pl-6">
+          <div className="bg-[#FF742C14] p-2 rounded-md">
+            <p className="text-sm font-semibold  text-gray-400">Vehicle Type</p>
+            <p>Coach Bus</p>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <p className="text-gray-400 font-medium">Chasis No</p>
-            <p className="text-gray-800">7890</p>
+          <div className="bg-[#FF742C14] p-2 rounded-md">
+            <p className="text-sm font-semibold text-gray-400">Vehicle Make</p>
+            <p>Tata Motors</p>
           </div>
-
-          
-          <div className="bg-gray-100 p-4 rounded-lg ">
-            <p className="text-gray-400 font-medium">Status</p>
-            <div className="flex items-center space-x-2">
-            <Tag className='flex space-x-1 bg-[#E3FFE6] border-none '> <FaCheckCircle className="text-green-500 mt-1" />
-              <span className="text-green-500 font-semibold">AVAILABLE</span>
-              </Tag>
-            </div>
+          <div className="bg-[#FF742C14] p-2 rounded-md">
+            <p className="text-sm font-semibold  text-gray-400">Registration No</p>
+            <p>01907</p>
+          </div>
+          <div className="bg-[#FF742C14] p-2 rounded-md">
+            <p className="text-sm font-semibold  text-gray-400">Engine Number</p>
+            <p>4789</p>
+          </div>
+          <div className="bg-[#FF742C14] p-2 rounded-md">
+            <p className="text-sm font-semibold  text-gray-400">Color</p>
+            <p>White</p>
+          </div>
+          <div className="bg-[#FF742C14] p-2 rounded-md">
+            <p className="text-sm font-semibold  text-gray-400">Number of Seat</p>
+            <p>14</p>
+          </div>
+          <div className="bg-[#FF742C14] p-2 rounded-md">
+            <p className="text-sm font-semibold  text-gray-400">Fleet No</p>
+            <p>01907</p>
+          </div>
+          <div className="bg-[#FF742C14] p-2 rounded-md">
+            <p className="text-sm font-semibold  text-gray-400">Chasis Number</p>
+            <p>7890</p>
+          </div>
+          <div className="bg-[#FF742C14] p-2 rounded-md">
+            <p className="text-sm font-semibold  text-gray-400">Status</p>
+            <Tag color="blue" className="flex items-center border-none">
+            <FaUserCheck className="mr-1" /> ASSIGNED
+            </Tag>
+          </div>
+          <div className="bg-[#FF742C14] p-2 rounded-md">
+            <p className="text-sm font-semibold  text-gray-400">Note</p>
+            <p>None</p>
           </div>
         </div>
-      </Card>
+      </div>
+
+      
+      <div className="flex justify-end mt-2 space-x-4 p-2 mr-2">
+        <Button className="w-[144px]" onClick={() => console.log('Cancel')}>
+          Cancel
+        </Button>
+        <Button type="primary" className="w-[144px]" onClick={() => console.log('Proceed')}>
+          Proceed
+        </Button>
+      </div>
     </div>
   );
 };

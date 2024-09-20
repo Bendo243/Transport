@@ -36,16 +36,7 @@ const Sidebar: React.FC = () => {
           </p>
         </li>
         </Link>
-        <Link to=''>
-        <li
-          className={getOptionClass('Booking')}
-          onClick={() => handleOptionClick('Booking')}
-        >
-          <FaSuitcase className="mr-2" />
-          <span>Booking</span>
-        </li>
-        </Link>
-        <Link to=''>
+       <Link to=''>
         <li
           className={getOptionClass('Trip')}
           onClick={() => handleOptionClick('Trip')}

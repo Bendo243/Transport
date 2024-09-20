@@ -14,10 +14,8 @@ const SelectBar = () => {
       style={{ width: 200,height:40 }}
       onChange={handleChange}
       options={[
-        { value: 'AVAILABLE', label: 'AVAILABLE' },
-        { value: 'ASSIGNED', label: 'ASSIGNED' },
-        { value: 'FAULTY', label: 'FAULTY' },
-        
+        { value: 'ACTIVE', label: 'ACTIVE' },
+        { value: 'INACTIVE', label: 'INACTIVE' },
         
         // { value: 'disabled', label: 'Disabled', disabled: true },
       ]}

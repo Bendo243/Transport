@@ -3,7 +3,7 @@ import { Route,Routes } from "react-router-dom"
 import MainLayout from "./MainLayout"
 
 import Layout from "./Layout"
-import Users from "./Users"
+import Users from "./Users/User"
 
 export default function Viewpoint() {
   return (
