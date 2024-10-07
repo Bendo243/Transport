@@ -17,15 +17,15 @@ interface ReportFaultModalProps {
 const ReportFaultModal: React.FC<ReportFaultModalProps> = ({ isVisible, onClose, onSubmit }) => {
   return (
     <Modal
-      visible={isVisible}          // Ant Design prop for visibility
-      onCancel={onClose}           // Handle modal close behavior
-      footer={null}                // No default footer
-      closable={true}              // Show close icon
+      visible={isVisible}          
+      onCancel={onClose}           
+      footer={null}                
+      closable={true}              
       centered={true}
       className="custom-modal !w-[400px]"
       closeIcon={<FaTimes className='text-[#FF742C] h-[20px]'/>}
     >
-      {/* Modal Header */}
+      
       <div className="flex justify-between items-center bg-[#FFF5EF] p-4 rounded-t-lg">
         <div className="flex items-center">
           <span className="text-red-500 text-lg font-bold h-">< ExclamationCircleOutlined /></span>
@@ -33,16 +33,16 @@ const ReportFaultModal: React.FC<ReportFaultModalProps> = ({ isVisible, onClose,
         </div>
         <Button
           type="text"
-          onClick={onClose}          // Close modal when button is clicked
+          onClick={onClose}          
           className="text-gray-400 hover:text-gray-600"
         >
           
         </Button>
       </div>
 
-      {/* Modal Body */}
+      
       <div className='p-4'>
-        {/* Comment Section */}
+        
         <div className="mb-4">
           <label htmlFor="comment" className="font-medium text-sm mb-1 block">
             Comment
@@ -55,7 +55,7 @@ const ReportFaultModal: React.FC<ReportFaultModalProps> = ({ isVisible, onClose,
           />
         </div>
 
-        {/* Upload Section */}
+        
         <div className="mb-6">
           <label htmlFor="upload" className="font-medium text-sm mb-1 block">
             Upload Snapshot/Attachment
@@ -68,7 +68,7 @@ const ReportFaultModal: React.FC<ReportFaultModalProps> = ({ isVisible, onClose,
           </div>
         </div>
 
-        {/* Action Buttons */}
+    
         <div className="flex flex-row-reverse  mt-4">
         
           <Button type="primary" onClick={onSubmit} className="w-[120px] bg-orange-500 hover:bg-orange-600 ml-2">

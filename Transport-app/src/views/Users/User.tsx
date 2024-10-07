@@ -1,190 +1,194 @@
-
-import React, { useState } from "react";
-import { Table, Button, Dropdown, Menu, Modal } from "antd";
-import {EditOutlined, PlusOutlined, StopOutlined } from "@ant-design/icons";
-import SearchBar from "./Searchbar"
-import SelectBar from "./SelectBar"
-import NewUserForm from "./NewUser";
-
- 
-
+import React, { useState } from 'react';
+import { Table, Tag, Dropdown, Menu, Pagination, Button } from 'antd';
+import { DownOutlined, FormOutlined, PlusOutlined, StopOutlined, UploadOutlined } from '@ant-design/icons';
+import NewUserModal from './NewUser'; 
+import Searchbar from './Searchbar';
+import SelectBar from './SelectBar';
+import DisableUserModal from './DisableUserModal';
+import bad from '../../assets/bad1.svg'
+import good from '../../assets/good5.svg'
 
 interface User {
-  key: number;
+  key: string;
+  sn: number;
   name: string;
   email: string;
   phone: string;
   role: string;
-  status: "ACTIVE" | "INACTIVE"; 
+  status: 'ACTIVE' | 'INACTIVE';
 }
 
-
-const initialUsers: User[] = [
-  {
-    key: 1,
-    name: "Obicheozo Lily Nkeiruka",
-    email: "lilypromise99@gmail.com",
-    phone: "09134421366",
-    role: "Admin",
-    status: "ACTIVE",
-  },
-  {
-    key: 2,
-    name: "Obicheozo Lily Nkeiruka",
-    email: "lilypromise99@gmail.com",
-    phone: "09134421366",
-    role: "Driver",
-    status: "INACTIVE",
-  },
-  {
-    key: 3,
-    name: "Obicheozo Lily Nkeiruka",
-    email: "lilypromise99@gmail.com",
-    phone: "09134421366",
-    role: "Driver",
-    status: "ACTIVE",
-  },
-  {
-    key: 4,
-    name: "Obicheozo Lily Nkeiruka",
-    email: "lilypromise99@gmail.com",
-    phone: "09134421366",
-    role: "Driver",
-    status: "ACTIVE",
-  },
-  {
-    key: 5,
-    name: "Obicheozo Lily Nkeiruka",
-    email: "lilypromise99@gmail.com",
-    phone: "09134421366",
-    role: "Driver",
-    status: "ACTIVE",
-  },
-  {
-    key: 6,
-    name: "Obicheozo Lily Nkeiruka",
-    email: "lilypromise99@gmail.com",
-    phone: "09134421366",
-    role: "Admin",
-    status: "INACTIVE",
-  },
+const UsersTable: React.FC = () => {
   
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [disableUserModalVisible,setDisableUserModalVisible] = useState(false);
+  const[selectedUser, setSelectedUser] = useState<User | null>(null);
   
-];
+  const [users, setUsers] = useState<User[]>([
+    { key: '1', sn: 1, name: 'Obicheozo Lily ', email: 'lilypromise99@gmail.com', phone: '09134421366', role: 'Admin', status: 'ACTIVE' },
+    { key: '2', sn: 2, name: 'Obicheozo Lily Nkeiruka', email: 'lilypromise99@gmail.com', phone: '09134421366', role: 'Driver', status: 'INACTIVE' },
+    { key: '3', sn: 3, name: 'Obicheozo Lily Nkeiruka', email: 'lilypromise99@gmail.com', phone: '09134421366', role: 'Driver', status: 'INACTIVE' },
+    { key: '4', sn: 4, name: 'Obicheozo Lily Nkeiruka', email: 'lilypromise99@gmail.com', phone: '09134421366', role: 'Driver', status: 'ACTIVE' },
+    { key: '5', sn: 5, name: 'Obicheozo Lily Nkeiruka', email: 'lilypromise99@gmail.com', phone: '09134421366', role: 'Admin', status: 'INACTIVE' },
+    { key: '6', sn: 6, name: 'Obicheozo Lily Nkeiruka', email: 'lilypromise99@gmail.com', phone: '09134421366', role: 'Driver', status: 'INACTIVE' },
+    { key: '7', sn: 7, name: 'Obicheozo Lily Nkeiruka', email: 'lilypromise99@gmail.com', phone: '09134421366', role: 'Driver', status: 'ACTIVE' },
+    { key: '8', sn: 8, name: 'Obicheozo Lily Nkeiruka', email: 'lilypromise99@gmail.com', phone: '09134421366', role: 'Driver', status: 'INACTIVE' },
+    { key: '9', sn: 9, name: 'Obicheozo Lily Nkeiruka', email: 'lilypromise99@gmail.com', phone: '09134421366', role: 'Admin', status: 'INACTIVE' },
+    { key: '10', sn: 10, name: 'Obicheozo Lily Nkeiruka', email: 'lilypromise99@gmail.com', phone: '09134421366', role: 'Driver', status: 'INACTIVE' },
+    { key: '11', sn: 11, name: 'Obicheozo Lily Nkeiruka', email: 'lilypromise99@gmail.com', phone: '09134421366', role: 'Admin', status: 'ACTIVE' },
+    { key: '12', sn: 12, name: 'Obicheozo  Nkeiruka', email: 'lilypromise99@gmail.com', phone: '09134421366', role: 'Admin', status: 'INACTIVE' },
+    { key: '13', sn: 13, name: 'Obicheozo Lily Nkeiruka', email: 'lilypromise99@gmail.com', phone: '09134421366', role: 'Admin', status: 'INACTIVE' },
+    { key: '14', sn: 14, name: 'Obicheozo Lily Nkeiruka', email: 'lilypromise99@gmail.com', phone: '09134421366', role: 'Admin', status: 'INACTIVE' },
+  ]);
 
-const Users: React.FC = () => {
-  
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const[currentPage,setCurrentPage] = useState<number>(1);
+  const pageSize=10;
   
   const columns = [
+    { title: 'S/N', dataIndex: 'sn', key: 'sn', render: (sn: number) => <div className="pl-3">{sn}</div> },
+    { title: 'Name', dataIndex: 'name', key: 'name' },
+    { title: 'Email', dataIndex: 'email', key: 'email' },
+    { title: 'Phone No', dataIndex: 'phone', key: 'phone' },
+    { title: 'Role', dataIndex: 'role', key: 'role' },
     {
-      title: "S/N",
-      dataIndex: "key",
-      key: "key",
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
+      render: (status: 'ACTIVE' | 'INACTIVE') => {
+        let color = '';
+        let icon = null;
+        let textStyle = {}
+        if (status === 'ACTIVE') {
+          color = 'blue';
+          icon =  <img src={good} alt="Logo" className='mr-2' />;
+          textStyle={fontWeight:500};
+        } else if (status === 'INACTIVE') {
+          color = '#F0F1F3';
+          icon =  <img src={bad} alt="Logo" className='mr-2' />;
+          textStyle ={color:'#777777', fontWeight:600};
+        }
+        return (
+          <Tag color={color} className="border-none rounded-lg">
+            <div className="flex items-center">
+              {icon}
+              <span style={textStyle}>
+              {status.toUpperCase()}
+              </span>
+            </div>
+          </Tag>
+        );
+      },
     },
     {
-      title: "NAME",
-      dataIndex: "name",
-      key: "name",
-    },
-    {
-      title: "EMAIL",
-      dataIndex: "email",
-      key: "email",
-    },
-    {
-      title: "PHONE NO",
-      dataIndex: "phone",
-      key: "phone",
-    },
-    {
-      title: "ROLE",
-      dataIndex: "role",
-      key: "role",
-    },
-    {
-      title: "STATUS",
-      dataIndex: "status",
-      key: "status",
-      render: (status: User["status"]) => (
-        <span
-          className={`px-2 py-1 rounded-full text-sm ${
-            status === "ACTIVE" ? "bg-green-100 text-green-600" : "bg-gray-100 text-gray-600"
-          }`}
-        >
-          {status}
-        </span>
-      ),
-    },
-    {
-      title: "ACTION",
-      key: "action",
-      render: (_: any,) => (
+      title: 'Action',
+      key: 'action',
+      render: (_: any, record:User) => (
         <Dropdown
           overlay={
             <Menu>
-              <Menu.Item key="edit" icon={<EditOutlined />}>
+              <Menu.Item key="1" icon={<FormOutlined />}>
                 Edit
               </Menu.Item>
-              <Menu.Item key="disable" icon={<StopOutlined />}>
+              <Menu.Item key="2" icon={<StopOutlined />} onClick={() => handleDisableClick(record)}> 
                 Disable
               </Menu.Item>
             </Menu>
           }
         >
-          <Button>Action</Button>
+          <Button>
+            <h2 className="font-semibold">Action</h2><DownOutlined />
+          </Button>
         </Dropdown>
       ),
     },
   ];
+   const paginatedData = users.slice((currentPage-1)*pageSize,currentPage *pageSize);
+  const handlePaginationChange = (page:number) => {
+    setCurrentPage(page);
+  }
 
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleModalCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleDisableClick =(user:User) => {
+    setSelectedUser(user);
+    setDisableUserModalVisible(true);
+  };
+
+  const handleDisableModalCancel = () => {
+    setDisableUserModalVisible(false);
+    setSelectedUser(null);
+  };
+
+  const handleDisableUser = () => {
+    console.log('user disable', selectedUser?.name);
+   setDisableUserModalVisible(false);
+   setSelectedUser(null);
+  }
+  const handleNewUserSubmit = (newUser: { name: string; email: string; phone: string; role: string; status: 'ACTIVE' }) => {
+    const newUserEntry: User = {
+      key: (users.length + 1).toString(),
+      sn: users.length + 1,
+      ...newUser,
+    };
+    setUsers((prevUsers) => [...prevUsers, newUserEntry]);
+  };
   return (
-    <div className="px-6 py-3">
-     <div className="flex justify-between ">
-     <div className=""> <div className="text-2xl font-bold mt-1 py-2  leading-3">Users </div> <p className="text-gray-400  ">4 users available</p></div>
-      <span className="flex items-center ">
-          <Button type="primary" onClick={showModal} className="mr-3 ">
-            New user <PlusOutlined className="text-white" />
+    <div>
+      
+      <div className="flex justify-between">
+        <div>
+          <div className="text-2xl font-bold ">Users</div>
+          <div><p className='text-gray-500 text-sm'>You have a total of {users.length} users</p></div>
+        </div>
+        <span className="flex items-center">
+          <div>
+            <Button
+              className="flex items-center border-gray-400 text-gray-600  mr-2 h-[36px]"
+              style={{
+                
+                borderColor: '#D3D3D3',
+              }}
+            >
+              Generate Report <UploadOutlined />
+            </Button>
+          </div>
+          
+          <Button type="primary"  onClick={showModal}>
+             New User <PlusOutlined className="text-white" />
           </Button>
-
-          <Modal
-            title={false}
-            open={isModalOpen}
-            onCancel={handleCancel}
-            footer={
-              <div className="flex justify-end space-x-3">
-                <Button onClick={handleCancel} className="bottom-2 w-[144px] right-3">
-                  Cancel
-                </Button>
-                <Button type="primary" onClick={handleOk} className="bottom-2 w-[144px] right-4">
-                  Submit
-                </Button>
-              </div>
-            }>
-          <NewUserForm/>
-          </Modal>
         </span>
-  </div>
-      <div className="flex gap-4 mb-4 mt-2">
-       <SearchBar/>
-        <SelectBar/>
+       
+      </div>
+      <div className="flex space-x-2  mb-2 ">
+        <Searchbar /> <div>  
+       <SelectBar/>
+      </div>
+      </div>
+      
+      <Table columns={columns} dataSource={paginatedData} pagination={false}  size="small" />
+
+      
+      <div className="flex justify-end p-2 bg-white ">
+        <Pagination defaultCurrent={currentPage} total={users.length} showSizeChanger={false} pageSize={pageSize} onChange={handlePaginationChange}/>
       </div>
 
-      <Table<User> dataSource={initialUsers} size="small" columns={columns} pagination={false} />
+      
+      <NewUserModal visible={isModalVisible} onCancel={handleModalCancel} onSubmit={handleNewUserSubmit} />
+
+      <DisableUserModal
+      visible={disableUserModalVisible}
+      onCancel={handleDisableModalCancel}
+      onDisable={handleDisableUser}
+      userName={selectedUser ? selectedUser.name:''}
+      />
     </div>
   );
 };
 
-export default Users;
+export default UsersTable;

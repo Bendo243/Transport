@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
 import { Upload, Button } from 'antd';
-import { PlusOutlined, PictureOutlined } from '@ant-design/icons';
+import {  CloudUploadOutlined } from '@ant-design/icons';
 import { RcFile } from 'antd/lib/upload/interface';
 
 const UploadButton: React.FC = () => {
   const [fileUrl, setFileUrl] = useState<string | null>(null);
 
-  // Handle file upload
+  
   const handleUpload = (file: RcFile) => {
     const reader = new FileReader();
     reader.onload = (e) => {
       setFileUrl(e.target?.result as string);
     };
     reader.readAsDataURL(file);
-    return false; // Prevent antd Upload from doing auto upload
+    return false; 
+    
   };
 
-  // Upload button JSX
+  
   const uploadButton = (
-    <div className="relative w-36 h-32 border-2 border-dashed rounded-md flex justify-center bg-white">
-      <PictureOutlined className="text-3xl text-gray-400 " />
+    <div className="relative w-36 h-32 border-2 border-dashed border-[#FF742C] rounded-md flex justify-center  bg-white">
+      <CloudUploadOutlined  className="text-3xl text-gray-300 " />
       <div>
-        <PlusOutlined className="absolute bottom-9 right-10 bg-orange-500 text-white rounded-full p-1" />
+      <p className='absolute bottom-6 right-14 flex-row'>select</p>
+      <p className='absolute bottom-1 right-14 text-[#FF742C]'>file(s)</p>
+       
       </div>
     </div>
   );
@@ -45,7 +48,7 @@ const UploadButton: React.FC = () => {
         </div>
       ) : (
         <Upload
-          className="flex justify-center"
+          className="flex justify-center "
           showUploadList={false}
           beforeUpload={handleUpload}
         >

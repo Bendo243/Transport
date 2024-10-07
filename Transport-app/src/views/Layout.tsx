@@ -14,7 +14,7 @@ export default function Layout(props: { children: ReactNode }) {
         <div className="h-[70px] w-full">
           <Header />
         </div>
-        <div className="h-[calc(100vh-70px)] overflow-y-auto bg-gray-200">
+        <div className="h-[calc(100vh-70px)] overflow-y-auto bg-gray-200 py-[32px] px-[24px]">
           {props.children}
         </div>
       </section>

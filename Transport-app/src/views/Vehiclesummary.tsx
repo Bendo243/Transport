@@ -10,6 +10,8 @@ import Available from "../assets/Available.svg"
 import Assigned from "../assets/Assigned.svg"
 import Faulty from "../assets/Faulty.svg"
 import SelectBar from "./SelectBar";
+import { FaTimes } from "react-icons/fa";
+import SelectType from "./SelectType";
 
 
 
@@ -34,24 +36,24 @@ const Vehiclesummary: React.FC = () => {
     setIsModalOpen(true);
   };
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
+  // const handleOk = () => {
+  //   setIsModalOpen(false);
+  // };
 
   const handleCancel = () => {
     setIsModalOpen(false);
   };
 
   return (
-    <div className="">
-      <div className="flex justify-between ">
-       <div className="ml-4"> <div className="text-2xl font-bold py-2 mt-1 leading-3">Vehicles </div></div>
+    <div>
+      <div className="flex justify-between mb-1">
+       <div> <div className="text-2xl font-bold">Vehicles </div><div><p className='text-gray-500 text-sm'>You have a total of 20 vehicles</p></div></div>
         <span className="flex items-center">
        
          <div>
           <Button
-          className="flex items-center border-gray-400 text-gray-600 mt-2 mr-2  h-[36px]" style={{
-         borderRadius:"6px",
+          className="flex items-center border-gray-400 text-gray-600 mr-2 h-[36px]" style={{
+         borderRadius:"",
          borderColor:"#D3D3D3",
          }}
          >
@@ -59,41 +61,37 @@ const Vehiclesummary: React.FC = () => {
          </Button> 
         
          </div>
-          <Button type="primary" onClick={showModal} className="mr-3 mt-2">
+          <Button type="primary" onClick={showModal} className="">
             New Vehicle <PlusOutlined className="text-white" />
           </Button>
 
           <Modal
-            // closeIcon={false}
+            closeIcon={<FaTimes className="text-[#FF742C] hover:text-red-700" />} 
             centered={true}
             open={isModalOpen}
             onCancel={handleCancel}
-            footer={
-              <div className="flex justify-end space-x-3">
-                <Button onClick={handleCancel} className="bottom-6 w-[144px] right-3">
-                  Cancel
-                </Button>
-                <Button type="primary" onClick={handleOk} className="bottom-6 w-[144px] right-4">
-                  Submit
-                </Button>
-              </div>
-            }
+            footer={null}
             className="custom-modal"
-          
-          >
+            >
             <div className="modal-header bg-[#FF742C1A] w-full h-[56px] flex items-center justify-start">
               <h2 className="text-black font-semibold ml-1 pl-2">NEW VEHICLE</h2></div>
-          <div className="custom-modal-body px-4"> <VehicleReg /> </div>
+          <div className="custom-modal-body px-4"> <VehicleReg
+          onCancel={handleCancel}
+          onSubmit={()=>{
+            handleCancel();
+          }} /> </div>
           </Modal>
         </span>
       </div>
-      <div className="flex space-x-2 mt-2 ml-4 ">
+      <div className="flex space-x-12">
         <Searchbar /> <div>  
        <SelectBar/>
       </div>
+      <div><SelectType/>
+      </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-4 p-4 flex-row ">
+      <div className="grid grid-cols-4 gap-4 py-2 flex-row ">
         {summaryItems.map((item, index) => (
           <div
             key={index}

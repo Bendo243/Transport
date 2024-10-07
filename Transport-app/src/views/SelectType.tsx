@@ -5,18 +5,18 @@ const handleChange = (value: string) => {
     console.log(`selected ${value}`);
   };
 
-const SelectBar = () => {
+const SelectType = () => {
   
     return (
     <div className='w-[200px] h-[32px]'>
        <Select
-      defaultValue="status"
-      style={{ width: '200px',height:32 }}
+      defaultValue="Type"
+      style={{ width: 200,height:32 }}
       onChange={handleChange}
       options={[
-        { value: 'AVAILABLE', label: 'AVAILABLE' },
-        { value: 'ASSIGNED', label: 'ASSIGNED' },
-        { value: 'FAULTY', label: 'FAULTY' },
+        { value: 'Coach Bus', label: 'Coach Bus' },
+        { value: 'Mini Bus', label: 'Mini Bus' },
+        { value: 'Executive', label: 'Executive' },
         
         
         // { value: 'disabled', label: 'Disabled', disabled: true },
@@ -26,4 +26,4 @@ const SelectBar = () => {
   )
 }
 
-export default SelectBar
+export default SelectType
