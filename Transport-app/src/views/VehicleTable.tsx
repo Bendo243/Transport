@@ -88,12 +88,16 @@ const VehicleTable: React.FC = () => {
       render: (status: Vehicle['status']) => {
         let color = '';
         let icon = null;
+        let textColor='';
+        let bgColor='';
 
         if (status === 'AVAILABLE') {
           color = 'green';
           icon = <img src={good} alt="Logo" className='mr-1' />;
         } else if (status === 'FAULTY') {
-          color = 'red';
+          
+          bgColor='bg-[#FFE1E1]'
+          textColor='text-[#F05050]';
           icon = <img src={bad} alt="Logo" className='mr-1' />;
         } else if (status === 'ASSIGNED') {
           color = 'blue';
@@ -101,7 +105,7 @@ const VehicleTable: React.FC = () => {
         }
 
         return (
-          <Tag color={color} className='border-none rounded-lg'>
+          <Tag color={color} className={`border-none rounded-lg font-medium ${textColor} ${bgColor}`}>
             <div className="flex items-center">
               {icon}
               {status.toUpperCase()}

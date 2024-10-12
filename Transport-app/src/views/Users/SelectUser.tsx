@@ -1,17 +1,19 @@
-
 import { Select, } from 'antd';
 
-const handleChange = (value: string) => {
-    console.log(`selected ${value}`);
-  };
+interface selectBarProps{
+  onStatuschange: (status:string | null)=> void;
+}
 
-const SelectBar = () => {
-  
+const SelectBar: React.FC<selectBarProps>=({onStatuschange}) => {
+   const handleChange = (value:string)=> {
+    onStatuschange(value);
+   }
     return (
     <div className='w-[200px] h-[32px]'>
        <Select
+       
       defaultValue="STATUS"
-      style={{ width: 200,height:40 }}
+      style={{ width: 200,height:32 }}
       onChange={handleChange}
       options={[
         { value: 'ACTIVE', label: 'ACTIVE' },

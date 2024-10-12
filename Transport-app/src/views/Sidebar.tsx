@@ -7,6 +7,7 @@ import vehicle from '../assets/Vehicle.svg'
 import trip from '../assets/road.svg'
 import users from '../assets/Users.svg'
 import route from '../assets/route.svg'
+import claim from '../assets/Claims.svg'
 
 const Sidebar: React.FC = () => {
   const [activeOption, setActiveOption] = useState<string>(''); 
@@ -32,7 +33,7 @@ const Sidebar: React.FC = () => {
 
   
   const getOptionClass = (option: string) =>
-    `flex items-center px-4 py-2  cursor-pointer mr-2 ${
+    `flex items-center px-4 py-2  cursor-pointer ${
       activeOption === option ? 'bg-[#FF742C]' : 'hover:bg-[#FF742C] '
     }`;
 
@@ -96,6 +97,15 @@ const Sidebar: React.FC = () => {
             >
               <img src={route} alt="Logo" className="mr-2" />
               <span>Loading Bays</span>
+            </li>
+          </Link>
+          <Link to="/claim">
+            <li
+              className={getOptionClass('claims')}
+              onClick={() => handleOptionClick('claims')}
+            >
+              <img src={claim} alt="Logo" className="mr-2" />
+              <span>Claims</span>
             </li>
           </Link>
 

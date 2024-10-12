@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Table, Dropdown, Menu, Button, Pagination, Tag } from 'antd';
 import { DownOutlined, EditOutlined, DeleteOutlined, StopOutlined, PlusOutlined, UploadOutlined, CheckCircleOutlined, ReloadOutlined } from '@ant-design/icons';
-import Searchbar from './searchBar';
+import Searchbar from './searchBay';
 import SelectBar from './selectbar';
 import LoadingBayModal from './loadingBayModal';
 import DeleteModal from './deleteModal';

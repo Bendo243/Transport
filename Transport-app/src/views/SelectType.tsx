@@ -11,12 +11,12 @@ const SelectType = () => {
     <div className='w-[200px] h-[32px]'>
        <Select
       defaultValue="Type"
-      style={{ width: 200,height:32 }}
+      style={{ width: '200px',height:32 }}
       onChange={handleChange}
       options={[
-        { value: 'Coach Bus', label: 'Coach Bus' },
-        { value: 'Mini Bus', label: 'Mini Bus' },
-        { value: 'Executive', label: 'Executive' },
+        { value: 'AVAILABLE', label: 'AVAILABLE' },
+        { value: 'ASSIGNED', label: 'ASSIGNED' },
+        { value: 'FAULTY', label: 'FAULTY' },
         
         
         // { value: 'disabled', label: 'Disabled', disabled: true },

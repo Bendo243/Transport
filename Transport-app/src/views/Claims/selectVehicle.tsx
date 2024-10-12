@@ -5,12 +5,12 @@ const handleChange = (value: string) => {
     console.log(`selected ${value}`);
   };
 
-const SelectBar = () => {
+const SelectVehicle = () => {
   
     return (
     <div className='w-[200px] h-[32px]'>
        <Select
-      defaultValue="Status"
+      defaultValue="Vehicle"
       style={{ width: '200px',height:32 }}
       onChange={handleChange}
       options={[
@@ -26,4 +26,4 @@ const SelectBar = () => {
   )
 }
 
-export default SelectBar
+export default SelectVehicle

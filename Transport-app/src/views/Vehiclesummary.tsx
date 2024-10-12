@@ -86,8 +86,8 @@ const Vehiclesummary: React.FC = () => {
       <div className="flex space-x-12">
         <Searchbar /> <div>  
        <SelectBar/>
-      </div>
-      <div><SelectType/>
+      </div><SelectType/>
+      <div>
       </div>
       </div>
 
@@ -114,7 +114,7 @@ const Vehiclesummary: React.FC = () => {
               </div>
             </div>
             <div className="  bg-cover  h-full p-x-4 relative">
-              <div className="h-[250px] w-20 bg-[#BA41321A] absolute right-0 top-0 z-0 rotate-[30deg]"></div>
+              <div className="h-[250px] w-20 bg-[#BA41321A] absolute right-0 top-0 z-0 rotate-[34deg]"></div>
               <img
                 src={item.icon}
                 alt={`${item.label} icon`}
